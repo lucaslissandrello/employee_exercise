@@ -10,4 +10,6 @@ COPY . .
 
 RUN go build employee_exercise/src/cmd/server
 
+EXPOSE 80
+
 CMD [ "./server" ]
