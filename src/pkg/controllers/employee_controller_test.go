@@ -299,6 +299,7 @@ func mockEmployee() models.Employee {
 		Gender:         "M",
 		BirthDate:      time.Date(1994, 11, 8, 7, 30, 00, 0, time.UTC),
 		HireDate:       time.Date(2022, 06, 20, 15, 00, 00, 0, time.UTC),
+		Department:     "Development",
 	}
 }
 
@@ -323,7 +324,7 @@ func mockRequestWithWrongPageParameter() *http.Request {
 }
 
 func statusOkExpectedBody() *bytes.Buffer {
-	return bytes.NewBuffer([]byte(`{"total":1,"page":1,"employees":[{"emp_no":1,"birth_date":"1994-11-08T07:30:00Z","first_name":"Lucas","last_name":"Lissandrello","gender":"M","hire_date":"2022-06-20T15:00:00Z"}]}`))
+	return bytes.NewBuffer([]byte(`{"total":1,"page":1,"employees":[{"emp_no":1,"birth_date":"1994-11-08T07:30:00Z","first_name":"Lucas","last_name":"Lissandrello","gender":"M","hire_date":"2022-06-20T15:00:00Z","department":"Development"}]}`))
 }
 
 func badRequestWrongLimitParameterExpectedBody() *bytes.Buffer {
