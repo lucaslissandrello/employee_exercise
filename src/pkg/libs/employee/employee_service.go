@@ -3,10 +3,10 @@ package employee
 import (
 	"context"
 	"database/sql"
+	"employee_exercise/pkg/models"
 	"fmt"
 	"github.com/google/logger"
 	"net/http"
-	"src/src/pkg/models"
 )
 
 type EmployeeService struct {

@@ -1,13 +1,13 @@
 package main
 
 import (
+	"employee_exercise/pkg/controllers"
+	"employee_exercise/pkg/libs/database"
+	"employee_exercise/pkg/libs/employee"
 	"github.com/google/logger"
 	"github.com/gorilla/mux"
 	"net/http"
 	"os"
-	"src/src/pkg/controllers"
-	"src/src/pkg/libs/database"
-	"src/src/pkg/libs/employee"
 )
 
 func main() {

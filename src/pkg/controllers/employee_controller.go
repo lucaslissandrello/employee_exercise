@@ -2,12 +2,12 @@ package controllers
 
 import (
 	"context"
+	"employee_exercise/pkg/libs/employee"
+	"employee_exercise/pkg/models"
 	"encoding/json"
 	"fmt"
 	"github.com/google/logger"
 	"net/http"
-	"src/src/pkg/libs/employee"
-	"src/src/pkg/models"
 	"strconv"
 	"strings"
 	"time"
