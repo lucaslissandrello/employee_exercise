@@ -16,12 +16,6 @@ COPY src/pkg/libs/employee/employee_service_test.go ./src/pkg/libs/employee/empl
 COPY src/pkg/models/department.go ./src/pkg/models/department.go
 COPY src/pkg/models/employee.go ./src/pkg/models/employee.go
 
-RUN ls src/cmd/aasdf
+RUN go build employee_exercise/src/cmd/server
 
-RUN go build -o src/cmd/aasdf/aasdf
-
-WORKDIR /dist
-
-RUN cp /build/main .
-
-CMD [ "/build/server" ]
+CMD [ "./server" ]

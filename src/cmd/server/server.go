@@ -1,9 +1,9 @@
 package main
 
 import (
-	"employee_exercise/pkg/controllers"
-	"employee_exercise/pkg/libs/database"
-	"employee_exercise/pkg/libs/employee"
+	"employee_exercise/src/pkg/controllers"
+	"employee_exercise/src/pkg/libs/database"
+	"employee_exercise/src/pkg/libs/employee"
 	"github.com/google/logger"
 	"github.com/gorilla/mux"
 	"net/http"

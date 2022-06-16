@@ -4,7 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"database/sql/driver"
-	"employee_exercise/pkg/models"
+	"employee_exercise/src/pkg/models"
 	"errors"
 	"fmt"
 	"github.com/DATA-DOG/go-sqlmock"

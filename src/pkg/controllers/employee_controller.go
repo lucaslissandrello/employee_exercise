@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"context"
-	"employee_exercise/pkg/libs/employee"
-	"employee_exercise/pkg/models"
+	"employee_exercise/src/pkg/libs/employee"
+	"employee_exercise/src/pkg/models"
 	"encoding/json"
 	"fmt"
 	"github.com/google/logger"

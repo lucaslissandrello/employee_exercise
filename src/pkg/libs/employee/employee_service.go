@@ -3,7 +3,7 @@ package employee
 import (
 	"context"
 	"database/sql"
-	"employee_exercise/pkg/models"
+	"employee_exercise/src/pkg/models"
 	"fmt"
 	"github.com/google/logger"
 	"net/http"
