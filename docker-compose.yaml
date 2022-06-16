@@ -1,18 +1,26 @@
 version: "3.7"
 
 services:
-
-  app:
-    container_name: employee_service
+  employee_service:
     build:
       context: .
       dockerfile: Dockerfile
     environment:
       MYSQL_USER: "root"
-      MYSQL_PASSWORD: "pass"
+      MYSQL_PASSWORD: "root"
       MYSQL_PORT: "3306"
-      MYSQL_HOST: "localhost"
+      MYSQL_HOST: "database"
       DB_NAME: "employees"
 
     ports:
       - "80:80"
+
+  database:
+    image: mysql:8.0
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./datacharmer-test_db:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=employees
