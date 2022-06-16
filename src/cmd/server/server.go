@@ -6,8 +6,10 @@ import (
 	"employee_exercise/src/pkg/libs/employee"
 	"github.com/google/logger"
 	"github.com/gorilla/mux"
+	"go.uber.org/ratelimit"
 	"net/http"
 	"os"
+	"strconv"
 )
 
 func main() {
@@ -18,10 +20,20 @@ func main() {
 		os.Exit(1)
 	}
 
+	rate := os.Getenv("RATE_LIMIT")
+	rateLimit, rateError := strconv.Atoi(rate)
+	if rateError != nil {
+		logger.Fatal("RATE_LIMIT paramter is not a number: ", rateError)
+		os.Exit(1)
+	}
+
+	rateLimiter := ratelimit.New(rateLimit)
+
 	employeeController := controllers.EmployeeController{
 		EmployeeService: &employee.EmployeeService{
 			EmployeeManager: database.GetDbEngine(),
 		},
+		RateLimiter: rateLimiter,
 	}
 
 	router := mux.NewRouter()

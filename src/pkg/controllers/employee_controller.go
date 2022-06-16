@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/google/logger"
+	"go.uber.org/ratelimit"
 	"net/http"
 	"strconv"
 	"strings"
@@ -20,9 +21,11 @@ type EmployeeManager interface {
 
 type EmployeeController struct {
 	EmployeeService EmployeeManager
+	RateLimiter     ratelimit.Limiter
 }
 
 func (e *EmployeeController) GetEmployees(w http.ResponseWriter, r *http.Request) {
+	e.RateLimiter.Take()
 	w.Header().Set("Content-Type", "application/json")
 	response := make(map[string]string)
 	parameters := make(map[string]string)
@@ -86,6 +89,7 @@ func (e *EmployeeController) GetEmployees(w http.ResponseWriter, r *http.Request
 }
 
 func (e *EmployeeController) AddEmployeeToDepartment(w http.ResponseWriter, r *http.Request) {
+	e.RateLimiter.Take()
 	response := make(map[string]string)
 	var employeeDepartmentRequest models.EmployeeDepartmentRequest
 	unmarshalErr := json.NewDecoder(r.Body).Decode(&employeeDepartmentRequest)

@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"errors"
 	"github.com/stretchr/testify/assert"
+	"go.uber.org/ratelimit"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -175,6 +176,7 @@ func TestEmployeeController_AddEmployeeToDepartment(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			employeeController := &EmployeeController{
 				EmployeeService: tt.fields.EmployeeService,
+				RateLimiter: ratelimit.New(100),
 			}
 			rr := httptest.NewRecorder()
 			employeeController.AddEmployeeToDepartment(rr, tt.args.r)
@@ -274,6 +276,7 @@ func TestEmployeeController_GetEmployees(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			e := &EmployeeController{
 				EmployeeService: tt.fields.EmployeeService,
+				RateLimiter: ratelimit.New(100),
 			}
 
 			rr := httptest.NewRecorder()

@@ -61,3 +61,7 @@ https://github.com/datacharmer/test_db.
 * **MYSQL_PORT**
 
   Ex: MYSQL_PORT = 3306
+
+* **RATE_LIMIT**
+
+  Ex: RATE_LIMIT = 100
